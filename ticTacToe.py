@@ -6,9 +6,15 @@ def printBoard(board):
     #                                                                       #
     # Hint: you can follow the same process that was done in the textbook.  #
     #########################################################################
+	print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
+	print('-+-+-')
+	print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
+	print('-+-+-')
+	print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+
 
 def checkWinner(board, player):    
-    print('Checking if ' + player + ' is a winner...')
+	print('Checking if ' + player + ' is a winner...')
     
     # TO DO #################################################################
     # Write code in this function that checks the tic-tac-toe board          #
@@ -19,30 +25,40 @@ def checkWinner(board, player):
     # if the player in the variable 'player' has not won.                   #
     #########################################################################
     
-    
+
+	return ((board['top-L'] == player and board['top-M'] == player and board['top-R'] == player) or
+	(board['mid-L'] == player and board['mid-M'] == player and board['mid-R'] == player) or
+	(board['low-L'] == player and board['low-M'] -- player and board['low-R'] == player) or
+	(board['top-L'] == player and board['mid-L'] == player and board['low-L'] == player) or
+	(board['top-M'] == player and board['mid-M'] == player and board['low-M'] == player) or
+	(board['top-R'] == player and board['mid-R'] == player and board['low-R'] == player) or
+	(board['top-L'] == player and board['mid-M'] == player and board['low-R'] == player) or
+	(board['top-R'] == player and board['mid-M'] == player and board['low-L'] == player))
+
+
 def startGame(startingPlayer, board):
     # TO DO #################################################################
     # Add comments to each line in this function to describe what           #
     # is happening. You do not need to modify any of the Python code        #
     #########################################################################
 
-    turn = startingPlayer
-    for i in range(9):
-        printBoard(board)
-        print('Turn for ' + turn + '. Move on which space?')
-        move = input()
-        board[move] = turn
-        if( checkWinner(board, 'X') ):
-            print('X wins!')
-            break
-        elif ( checkWinner(board, 'O') ):
-            print('O wins!')
-            break
+	turn = startingPlayer #first player makes their move
+	for i in range(9):    #loops the boards key locations every turn
+		printBoard(board) #prints the board
+		print('Turn for ' + turn + '. Move on which space?') #prints out the name of the active player and asks which space to move on
+		move = input() #determines that players move based on their input
+		board[move] = turn #updates the board with the previous players move
+		if( checkWinner(board, 'X') ): #checks to see if player "X" has won
+			print('X wins!') #if player "X" has won this prints out their victory message
+			break #ends the program
+		elif ( checkWinner(board, 'O') ): #checks to see if player "O" has won
+			print('O wins!') #if player "O" has won this prints their victory message
+			break #ends the program
     
-        if turn == 'X':
-            turn = 'O'
-        else:
-            turn = 'X'
+		if turn == 'X':
+			turn = 'O' #swaps over to player "O" turn
+		else:
+			turn = 'X' #swaps over to player "X" turn
         
-    printBoard(board)
+	printBoard(board)
     
