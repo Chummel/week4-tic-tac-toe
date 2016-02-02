@@ -28,7 +28,7 @@ def checkWinner(board, player):
 
 	return ((board['top-L'] == player and board['top-M'] == player and board['top-R'] == player) or
 	(board['mid-L'] == player and board['mid-M'] == player and board['mid-R'] == player) or
-	(board['low-L'] == player and board['low-M'] -- player and board['low-R'] == player) or
+	(board['low-L'] == player and board['low-M'] == player and board['low-R'] == player) or
 	(board['top-L'] == player and board['mid-L'] == player and board['low-L'] == player) or
 	(board['top-M'] == player and board['mid-M'] == player and board['low-M'] == player) or
 	(board['top-R'] == player and board['mid-R'] == player and board['low-R'] == player) or
